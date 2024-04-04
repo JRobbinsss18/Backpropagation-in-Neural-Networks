@@ -25,20 +25,29 @@ Here we will discuss how to get our codes up and running
 
 ### XGBoostPred.py
 
-run 'pip install matplotlib numpy optuna pandas yfinance pandas_datareader prophet scikit-learn statsmodels xgboost pmdarim'
+run '''pip install matplotlib numpy optuna pandas yfinance pandas_datareader prophet scikit-learn statsmodels xgboost pmdarim'''
 
 ## DNNPred.py
 
-run 'pip install matplotlib numpy pandas yfinance scikit-learn tensorflow'
+run '''pip install matplotlib numpy pandas yfinance scikit-learn tensorflow'''
 
-## NNPred.py
-run 'pip install matplotlib numpy pandas yfinance scikit-learn tensorflow'
+## ManualNNPred.py
+run '''pip install matplotlib numpy pandas yfinance scikit-learn tensorflow'''
 
 # Run the program
 
 Simply get to the directory VIA terminal, run 'python *filename*
 
+Running this code will give you predictions at the command line but also save a file to your current directory for the chart
+
 
 # Example outputs
-
+## XGBoost
 ![XGBoost Version](AAPL_20240324_predicted_vs_actual_XBoost.png "XGBoost Version")
+
+## DNN
+![DNN Version]()
+
+# ManualNN
+![Manual NN Version]()
+

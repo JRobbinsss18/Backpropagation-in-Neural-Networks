@@ -37,8 +37,8 @@ def mean_absolute_percentage_error(y_true, y_pred):
 def add_lags(df, num_days_pred):
     target = 'Close'
     df = df.copy()
-    for i in range(1, 13):  # Create 12 lags
-        df.loc[:, f'lag{i}'] = df.loc[:, target].shift(num_days_pred * i)
+    for i in range(1, 13):
+        df[f'lag{i}'] = df[target].shift(num_days_pred * i)
     return df
 
 def create_features(df):
@@ -129,11 +129,10 @@ def main():
     plt.xlabel('Date')
     plt.ylabel('Stock Value')
     plt.legend()
-    plt.show()
-
+    #plt.show()
     current_date = datetime.datetime.now().strftime("%Y%m%d")
-    filename = f"{stock_ticker}_{current_date}_predicted_vs_actual_NN.png"
+    filename = f"{stock_ticker}_{current_date}_predicted_vs_actual_DNN.png"
     plt.savefig(filename)
-
+    print(f"{filename} saved to current directory!")
 if __name__ == "__main__":
     main()

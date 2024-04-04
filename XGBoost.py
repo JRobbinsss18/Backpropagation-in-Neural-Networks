@@ -37,9 +37,6 @@ def add_lags(df,num_days_pred):
     df['lag10'] = df[target].shift(num_days_pred*10)
     df['lag11'] = df[target].shift(num_days_pred*11)
     df['lag12'] = df[target].shift(num_days_pred*12)
-
-
-
     return df
 
 def create_features(df):
@@ -66,7 +63,6 @@ def xgboostmodel(df_xgb,create_features,num_days_pred):
     return X,y
 
 def objective(trial, X_train, y_train, X_test, y_test):
-    # Define hyperparameters to search
     param = {
         'objective': 'reg:squarederror',
         'eval_metric': 'rmse',
@@ -94,21 +90,21 @@ def objective(trial, X_train, y_train, X_test, y_test):
     rmse = np.sqrt(mean_squared_error(y_test, y_pred))
     
     return rmse
-import datetime  # Ensure this is imported at the beginning of your script
 
 def main():
+    # User Inputs
     stock_ticker = input("Enter the stock ticker symbol (e.g., AAPL): ")
     num_days_pred = int(input("Enter the number of days to predict into the future: "))
     years_of_data = int(input("Enter the number of years of historical data to use: "))
     
     # Download stock data
     stock_data = yf.download(stock_ticker)
+    # Preprocess data
     slice_point = int(len(stock_data) - 365 * years_of_data)
     stock_data = stock_data.iloc[slice_point:]
     stock_data.drop(columns=['Open', 'High', 'Low', 'Adj Close', 'Volume'], inplace=True)
-    
-    # Prepare data for XGBoost model
     df_xgb = stock_data.copy()
+    # Create model and train
     X, y = xgboostmodel(df_xgb, create_features, num_days_pred)
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
     
@@ -162,17 +158,16 @@ def main():
     plt.xlabel('Date')
     plt.ylabel('Stock Value')
     plt.legend()
-    plt.gcf().autofmt_xdate()  # Auto-format date labels
+    plt.gcf().autofmt_xdate()
 
     # Save the plot
     current_date = datetime.datetime.now().strftime("%Y%m%d")
-    filename = f"{stock_ticker}_{current_date}_predicted_vs_actual_XBoost.png"
+    filename = f"{stock_ticker}_{current_date}_predicted_vs_actual_XGBoost.png"
     plt.savefig(filename)
-    # plt.show()  # Uncomment if you want to display the plot in Jupyter Notebook
-
+    # plt.show()
     # Print future predictions
     print(prediction_xgb)
-
+    print(f"{filename} saved to current directory!")
 if __name__ == "__main__":
     main()
 
