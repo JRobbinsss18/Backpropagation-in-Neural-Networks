@@ -28,7 +28,7 @@ Here we will discuss how to get our codes up and running
 ### XGBoostPred.py
 
 run ``` pip install matplotlib numpy optuna pandas yfinance pandas_datareader prophet scikit-learn statsmodels xgboost pmdarim ```
-
+* I had to remove pmdarim in the main pip line, and put it on its own line, that may be a necesity to run. *
 ## DNNPred.py
 
 run ``` pip install matplotlib numpy pandas yfinance scikit-learn tensorflow ```
