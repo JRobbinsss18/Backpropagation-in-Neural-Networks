@@ -43,7 +43,7 @@ Running this code will give you predictions at the command line but also save a 
 
 # Example outputs
 ## XGBoost
-![XGBoost Version](./Examples/AAPL_20240324_predicted_vs_actual_XBoost.png "XGBoost Version")
+![XGBoost Version](Examples/AAPL_20240324_predicted_vs_actual_XBoost.png "XGBoost Version")
 
 ## DNN
 ![DNN Version]()
