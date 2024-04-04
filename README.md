@@ -28,7 +28,7 @@ Here we will discuss how to get our codes up and running
 ### XGBoostPred.py
 
 run ``` pip install matplotlib numpy optuna pandas yfinance pandas_datareader prophet scikit-learn statsmodels xgboost pmdarim ```
-* I had to remove pmdarim in the main pip line, and put it on its own line, that may be a necesity to run. *
+I had to remove pmdarim in the main pip line, and put it on its own line, that may be a necesity to run.
 ## DNNPred.py
 
 run ``` pip install matplotlib numpy pandas yfinance scikit-learn tensorflow ```
@@ -46,8 +46,13 @@ For XGBoostPred.py and DNNPred.py, input 1 is Stock ticker, input 2 is number of
 
 For ManualNNPred.py, input 1 is Stock ticker, input 2 is years of data to gathe,r input 3 is number of days to predict
 
+There is no script to run multiple iterations, as each iteration takes a good bit of time for training and such.
+
 # Example outputs
 ## XGBoost
+
+Testing versus trained works great, predicting future seems to suffer a bit.
+
 ![XGBoost Version](./Examples/AAPL_20240404_predicted_vs_actual_XGBoost.png "XGBoost Version")
 
 ## DNN
@@ -93,6 +98,7 @@ Works well!
 
 # Conclusion
 
-Our neural network is not perfect, there is niche cases where it interprets data incorrectly, deviating from expected. Although we can see on average it works, looking into the code, we employ various strategies such as gradient clipping, trying different loss functions, and more to attempt to better our network. Some of those may be working inversely, although as a project, we aim to showcase the power of backpropagation, and we have.
+Our neural network is not perfect, It is a single input layer, single hidden layer, single output layer. It is as minimal of a neural network as can be, although even with its light weight nature, we can see the potential and power. There is niche cases where it interprets data incorrectly, deviating from expected. Although we can see for most cases it works, looking into the code, we employ various strategies such as gradient clipping, trying different loss functions, optimizing lambda, and more to attempt to better our network. The 'random' nature of stock prices make a perfect prediction impossible, especially without context of real work data of things causing price plumets and rises. This is why no model, even the XGBoost model which was designed for this, was not perfect (especially in predicting future). It is also important to note that in our neural network, changing variables such as learning rate, lambda, gradient clipping limit, etc... heavily changes output. The values as is provide a best 'general case', although runs exist where say lambda = .01 performed better than lambda = 10.
 
-Report: URL
+
+Report: [Report](./Report/JR_Backpropagation_report.pdf)
