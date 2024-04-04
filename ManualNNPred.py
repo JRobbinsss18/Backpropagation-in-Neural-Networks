@@ -188,7 +188,7 @@ def main():
     nn = SimpleNN(input_size=X_train.shape[1], hidden_size=50, output_size=1, lambd=10)
 
     # Train the NN
-    nn.train(X_train, Y_train, X_val, Y_val, initial_lr=0.05, epochs=200)
+    nn.train(X_train, Y_train, X_val, Y_val, initial_lr=0.2, epochs=200)
 
     # Predict
     predictions_scaled = nn.predict(X_val)
