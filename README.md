@@ -79,5 +79,20 @@ Works well!
 ### Notes
 
 Doesn't work well, after adjusting various variables, I came to a realization that it was due to my logic in the training loop where we aim to stabalize the logic by having learning rate adjusted based on results, This caused an accuracy issue as the neural network got caught on the wrong logic. This is an ongoing struggle that modern models run into. To iterate this point, I commented out the lines that adjusted the learning rate and we get this graph, which is not perfect, but much better.
-## PARA stock prediction no learning rate adjustment (3 years of datra, 7 days to predict)
+## PARA stock prediction no learning rate adjustment (3 years of data, 7 days to predict)
 ![Manual NN Version](./Examples/PARA_20240404_predicted_vs_actual_ManualNN_noLR.png "Manual NN Version PARA NO LR CHANGE")
+
+
+## TSLA stock prediction (3 years of data, 7 days to predict)
+![Manual NN Version](./Examples/TSLA_20240404_predicted_vs_actual_ManualNN.png "Manual NN Version TSLA")
+
+### Notes
+
+Works well!
+
+
+# Conclusion
+
+Our neural network is not perfect, there is niche cases where it interprets data incorrectly, deviating from expected. Although we can see on average it works, looking into the code, we employ various strategies such as gradient clipping, trying different loss functions, and more to attempt to better our network. Some of those may be working inversely, although as a project, we aim to showcase the power of backpropagation, and we have.
+
+Report: URL
